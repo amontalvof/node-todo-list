@@ -1,9 +1,10 @@
 require('colors');
+const { showMenu, pause } = require('./helpers/messages');
 
-console.clear();
-
-const main = async (params) => {
+const main = async () => {
     console.log('hello world');
+    showMenu();
+    // pause();
 };
 
 main();
