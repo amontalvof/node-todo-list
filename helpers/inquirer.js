@@ -40,7 +40,7 @@ const questions = [
 ];
 
 const inquirerMenu = async () => {
-    // console.clear();
+    console.clear();
     console.log('========================'.green);
     console.log('   Select an option'.white);
     console.log('========================\n'.green);
