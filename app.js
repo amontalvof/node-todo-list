@@ -9,9 +9,9 @@ const main = async () => {
     const tasksDB = readData();
 
     if (tasksDB) {
-        //set tasks
+        //load tasks
+        tasks.loadTasksFromArray(tasksDB);
     }
-    await pause();
 
     do {
         // print the menu
@@ -26,9 +26,9 @@ const main = async () => {
                 console.log(tasks.listArray);
                 break;
         }
-        // createData(tasks.listArray);
+        createData(tasks.listArray);
         await pause();
-    } while (opt !== '0');
+    } while (opt !== '7');
 };
 
 main();

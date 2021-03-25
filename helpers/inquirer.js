@@ -32,8 +32,8 @@ const questions = [
                 name: `${'6.'.green} Delete a task`,
             },
             {
-                value: '0',
-                name: `${'0.'.green} Exit`,
+                value: '7',
+                name: `${'7.'.green} Exit`,
             },
         ],
     },

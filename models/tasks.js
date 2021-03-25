@@ -7,11 +7,6 @@ class Tasks {
         this._list = {};
     }
 
-    createTask(desc = '') {
-        const task = new Task(desc);
-        this._list[task.id] = task;
-    }
-
     get listArray() {
         const list = [];
         Object.keys(this._list).forEach((key) => {
@@ -19,6 +14,17 @@ class Tasks {
             list.push(task);
         });
         return list;
+    }
+
+    createTask(desc = '') {
+        const task = new Task(desc);
+        this._list[task.id] = task;
+    }
+
+    loadTasksFromArray(tasks = []) {
+        tasks.forEach((task) => {
+            this._list[task.id] = task;
+        });
     }
 }
 
