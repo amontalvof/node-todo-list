@@ -25,6 +25,12 @@ const main = async () => {
             case '2':
                 tasks.fullList();
                 break;
+            case '3':
+                tasks.listPendingCompletedTasks(true);
+                break;
+            case '4':
+                tasks.listPendingCompletedTasks(false);
+                break;
         }
         createData(tasks.listArray);
         await pause();
