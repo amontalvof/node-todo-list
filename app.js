@@ -7,6 +7,7 @@ const {
     readInput,
     listTasksDelete,
     confirm,
+    showChecklist,
 } = require('./helpers/inquirer');
 
 const main = async () => {
@@ -23,22 +24,24 @@ const main = async () => {
         // print the menu
         opt = await inquirerMenu();
         switch (opt) {
-            case '1':
-                // create option
+            case '1': // create option
                 const desc = await readInput('Description:');
                 tasks.createTask(desc);
                 break;
-            case '2':
+            case '2': // list all tasks
                 tasks.fullList();
                 break;
-            case '3':
+            case '3': // list completed tasks
                 tasks.listPendingCompletedTasks(true);
                 break;
-            case '4':
+            case '4': // list pending tasks
                 tasks.listPendingCompletedTasks(false);
                 break;
-
-            case '6':
+            case '5': // check completed task
+                const ids = await showChecklist(tasks.listArray);
+                console.log(ids);
+                break;
+            case '6': // delete task
                 const id = await listTasksDelete(tasks.listArray);
                 if (id !== `${tasks.listArray.length + 1}`) {
                     const ok = await confirm('Are you sure?');
