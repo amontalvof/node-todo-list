@@ -88,6 +88,11 @@ const listTasksDelete = async (tasks = []) => {
         };
     });
 
+    choices.push({
+        value: `${tasks.length + 1}`,
+        name: `${tasks.length + 1}.`.green + ' Cancel',
+    });
+
     const questions = [
         {
             type: 'list',
@@ -102,4 +107,16 @@ const listTasksDelete = async (tasks = []) => {
     return id;
 };
 
-module.exports = { inquirerMenu, pause, readInput, listTasksDelete };
+const confirm = async (message = '') => {
+    const question = [
+        {
+            type: 'confirm',
+            name: 'ok',
+            message,
+        },
+    ];
+    const { ok } = await inquirer.prompt(question);
+    return ok;
+};
+
+module.exports = { inquirerMenu, pause, readInput, listTasksDelete, confirm };

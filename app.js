@@ -6,6 +6,7 @@ const {
     pause,
     readInput,
     listTasksDelete,
+    confirm,
 } = require('./helpers/inquirer');
 
 const main = async () => {
@@ -39,7 +40,13 @@ const main = async () => {
 
             case '6':
                 const id = await listTasksDelete(tasks.listArray);
-                console.log({ id });
+                if (id !== `${tasks.listArray.length + 1}`) {
+                    const ok = await confirm('Are you sure?');
+                    if (ok) {
+                        tasks.deleteTask(id);
+                        console.log('Task deleted successfully.');
+                    }
+                }
                 break;
         }
         createData(tasks.listArray);
