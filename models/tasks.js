@@ -53,7 +53,7 @@ class Tasks {
                 if (completedIn) {
                     idx += 1;
                     console.log(
-                        `${(idx + '.').green} ${desc} :: ${completedIn}`
+                        `${(idx + '.').green} ${desc} :: ${completedIn.green}`
                     );
                 }
             } else {
@@ -61,6 +61,20 @@ class Tasks {
                     idx += 1;
                     console.log(`${(idx + '.').green} ${desc} :: ${status}`);
                 }
+            }
+        });
+    }
+
+    toggleCompleted(ids = []) {
+        ids.forEach((id) => {
+            const task = this._list[id];
+            if (!task.completedIn) {
+                task.completedIn = new Date().toISOString();
+            }
+        });
+        this.listArray.forEach((task) => {
+            if (!ids.includes(task.id)) {
+                this._list[task.id].completedIn = null;
             }
         });
     }
