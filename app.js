@@ -1,7 +1,12 @@
 require('colors');
-const { inquirerMenu, pause, readInput } = require('./helpers/inquirer');
 const Tasks = require('./models/tasks');
 const { createData, readData } = require('./helpers/crudDB');
+const {
+    inquirerMenu,
+    pause,
+    readInput,
+    listTasksDelete,
+} = require('./helpers/inquirer');
 
 const main = async () => {
     let opt = '';
@@ -30,6 +35,11 @@ const main = async () => {
                 break;
             case '4':
                 tasks.listPendingCompletedTasks(false);
+                break;
+
+            case '6':
+                const id = await listTasksDelete(tasks.listArray);
+                console.log({ id });
                 break;
         }
         createData(tasks.listArray);

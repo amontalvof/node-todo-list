@@ -16,6 +16,12 @@ class Tasks {
         return list;
     }
 
+    deleteTask(id = '') {
+        if (this._list[id]) {
+            delete this._list[id];
+        }
+    }
+
     createTask(desc = '') {
         const task = new Task(desc);
         this._list[task.id] = task;
